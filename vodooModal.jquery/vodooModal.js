@@ -6,7 +6,9 @@
         var defaults = {
             openWith: null,
             closeWith: null,
-            animation: null,
+            contentAnimation: 'bottomToTop',
+            closeAnimation: 'bottomToTop',
+            transition: 'vodooSuperBounce',
             onOpen: function () {
             },
             onClose: function () {
@@ -53,8 +55,14 @@
         };
 
         var createVodooModal = function ($el) {
-            $el.addClass('vodooModal').addClass(plugin.settings.animation);
-            $(plugin.settings.closeWith).addClass(plugin.settings.animation).addClass('closeVodooModal');
+            $el
+                .addClass('vodooModal')
+                .addClass(plugin.settings.contentAnimation)
+                .addClass(plugin.settings.transition);
+            $(plugin.settings.closeWith)
+                .addClass(plugin.settings.closeAnimation)
+                .addClass('closeVodooModal')
+                .addClass(plugin.settings.transition);
         };
         
         var createOverlay = function () {

@@ -18,5 +18,5 @@ $('element').vodooModal({
 ```
 ## animation list
 
--bottomToTop
-_coming_
+- bottomToTop
+*coming*
