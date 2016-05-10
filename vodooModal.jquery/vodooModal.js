@@ -1,8 +1,9 @@
 (function ($) {
     var isOverlay = false;
     var $overlay = $('<div>').attr('id', 'vodooModalOverlay');
+    
     $.vodooModal = function (element, options) {
-
+        var wWidth = $(document).width();
         var defaults = {
             openWith: null,
             closeWith: null,
@@ -36,6 +37,11 @@
             $(plugin.settings.closeWith).on('click', function () {
                 plugin.close();
             });
+            
+            $(window).resize(function () {
+                wWidth = $(document).width();
+                $element.width($(document).width()-140);
+            })
         };
 
         plugin.open = function () {
@@ -54,11 +60,12 @@
             callBack('onClose');
         };
 
-        var createVodooModal = function ($el) {
+        var createVodooModal = function ($el) {;
             $el
                 .addClass('vodooModal')
                 .addClass(plugin.settings.contentAnimation)
-                .addClass(plugin.settings.transition);
+                .addClass(plugin.settings.transition)
+                .width($(document).width()-140);
             $(plugin.settings.closeWith)
                 .addClass(plugin.settings.closeAnimation)
                 .addClass('closeVodooModal')
@@ -80,6 +87,10 @@
                 throw new Error('callback not a function');
             }
         };
+        
+        var onResize = function () {
+            
+        }
 
         plugin.init();
 
